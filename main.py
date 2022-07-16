@@ -85,33 +85,33 @@ category_schema = CategorySchema(many=True)
 @app.route('/<string:location>/<int:location_id>/<string:department>/<int:department_id>/<string:category>', methods=['GET'])
 def getData(location="",location_id=0,department="",department_id=0,category=""):
     try:
-        if location=="location":   
-            if location_id==0:
+        if location=="location": #Checking if location is there in api path 
+            if location_id==0: #If location_id will be 0 it means we have to show all the locations
                 locations = Location.query.all()
                 res=locations_schema.dump(locations)
                 return jsonify(res),200
             else:
-                if department=="":
+                if department=="": #if department is "" it means we have to show only location based on location id
                     location_data=Location.query.filter_by(location_id=location_id).all()
                     res=locations_schema.dump(location_data)
                     return jsonify(res),200
                 else:
-                    if department=="department":
-                        if department_id==0:
+                    if department=="department": #Checking if department is there in api path 
+                        if department_id==0: #If department_id will be 0 it means we have to show all the department 
                             department=Department.query.filter_by(location_id=location_id).all()
                             res=department_schema.dump(department)
                             return jsonify(res),200
                         else:
-                            if category=="":
+                            if category=="": #if category is "" it means we have to show only category based on department_id 
                                 department_date=Department.query.filter_by(department_id=department_id,location_id=location_id).all()
                                 res=department_schema.dump(department_date)
                                 return jsonify(res),200
                             else:
-                                if category=="category":
+                                if category=="category": #Checking if category is there in api path
                                     category_data=Category.query.filter_by(department_id=department_id).all()
                                     res=category_schema.dump(category_data)
                                     return jsonify(res),200
-                                else:
+                                else: 
                                     logging.info("category path is not correct")
                                     return jsonify({"error":"400 bad request"}),400                
                     else:
@@ -127,6 +127,7 @@ def getData(location="",location_id=0,department="",department_id=0,category="")
 @app.route('/<string:post_request_name>', methods=['POST'])
 def addData(post_request_name):
     try:
+        #Reading the data from request body and parsing it into json
         post_request_data=request.get_data()
         post_request_data=json.loads(post_request_data)
     except:
@@ -169,6 +170,7 @@ def addData(post_request_name):
 def Update_delete_data(post_request_name,post_req_id):
     if request.method=='PUT':
         try:
+            #Reading the data from request body and parsing it into json
             post_request_data=request.get_data()
             post_request_data=json.loads(post_request_data)
         except:
