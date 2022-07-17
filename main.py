@@ -180,7 +180,7 @@ def Update_delete_data(post_request_name,post_req_id):
             if post_request_name=='location':
                 location = Location.query.get(post_req_id)
                 location.location_name=post_request_data["location_name"]
-                location.location_name=post_request_data["location_desc"]
+                location.location_desc=post_request_data["location_desc"]
                 db.session.commit()
                 return jsonify({"Success":"Successfully updated the record"}),200
 
