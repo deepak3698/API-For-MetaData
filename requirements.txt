@@ -5,3 +5,7 @@
 azure-functions
 azure-loganalytics
 azure-identity
+pandas
+openai
+sendgrid
+jinja2
