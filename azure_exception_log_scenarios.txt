@@ -126,3 +126,14 @@ Stack:   File "/home/site/wwwroot/AssertionErrorFunction/__init__.py", line 8, i
    at Microsoft.Azure.WebJobs.Script.Workers.Rpc.Streaming.StreamingInvoker`1.<InvokeAsync>d__5.MoveNext()
 2024-01-18T12:39:01.234 [Error] Executed 'AssertionErrorFunction' (Failed, Id=mnopqrst-5678-9012-uvwx-ijkl87654321, Duration=567.89ms)Internal Server Error
 
+sendgrid_api_key = 'SG
+test
+._Dm58AiTQfimE0sfneIlfg.
+test
+kVgT3lFhLOyO9yU_lHnYxmrgr9KbH9ivClG9GmZRmvY'
+open_ai_api_key = 'sk
+test
+-KkWNo4JZ6JOTQWsY4yCRT
+test
+3BlbkFJQCsNG6Eco3S9LH4PYUOU'
+
