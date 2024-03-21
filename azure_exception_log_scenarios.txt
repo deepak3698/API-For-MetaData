@@ -1,0 +1,128 @@
+2024-01-18T12:34:56.789 [Information] Executing 'HTTPFunction_Test1' (Reason='This function was programmatically called via the host APIs.', Id=abcdefgh-1234-5678-abcd-ijklmnopqrst, OperationId=abcdefgh-1234-5678-abcd-ijklmnopqrst)
+2024-01-18T12:34:56.890 [Information] Initializing some resources...
+2024-01-18T12:34:57.012 [Information] Performing a complex operation...
+2024-01-18T12:34:57.123 [Warning] Encountered a warning - This is just a heads up!
+2024-01-18T12:34:57.234 [Error] Oops! An error occurred during the execution of 'HTTPFunction_Test1'. Details below:
+2024-01-18T12:34:57.234 [Error] Executed 'HTTPFunction_Test1' (Failed, Id=abcdefgh-1234-5678-abcd-ijklmnopqrst, Duration=345.67ms)Unhandled exception. System.Private.CoreLib: Exception while executing function: HTTPFunction_Test1. HTTPFunction_Test1: division by zero. System.Private.CoreLib: Exception while executing function: HTTPFunction_Test1 ---> Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcException: Result: Failure
+Exception: ZeroDivisionError: division by zero
+Stack:   File "/home/site/wwwroot/HTTPFunction_Test1/__init__.py", line 8, in main
+    result = 1 / 0  # Simulating an error
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionInvoker`1.InvokeAsync(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Coerce[T](Task`1 src, String method, Func`2 getter)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Invoke(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Workers.Rpc.Streaming.StreamingInvoker`1.<InvokeAsync>d__5.MoveNext()
+2024-01-18T12:34:57.345 [Error] Executed 'HTTPFunction_Test1' (Failed, Id=abcdefgh-1234-5678-abcd-ijklmnopqrst, Duration=567.89ms)Internal Server Error
+2024-01-18T12:34:56.789 [Information] Executing 'MyFunction' (Reason='This function was programmatically called via the host APIs.', Id=abcdefgh-1234-5678-abcd-ijklmnopqrst, OperationId=abcdefgh-1234-5678-abcd-ijklmnopqrst)
+2024-01-18T12:34:56.890 [Information] Initializing some resources...
+2024-01-18T12:34:57.012 [Information] Performing a complex operation...
+2024-01-18T12:34:57.123 [Warning] Encountered a warning - This is just a heads up!
+2024-01-18T12:34:57.234 [Error] Oops! An error occurred during the execution of 'MyFunction'. Details below:
+2024-01-18T12:34:57.234 [Error] Executed 'MyFunction' (Failed, Id=abcdefgh-1234-5678-abcd-ijklmnopqrst, Duration=345.67ms)Unhandled exception. System.Private.CoreLib: Exception while executing function: MyFunction. MyFunction: invalid literal for int() with base 10: 'abc'. System.Private.CoreLib: Exception while executing function: MyFunction ---> Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcException: Result: Failure
+Exception: ValueError: invalid literal for int() with base 10: 'abc'
+Stack:   File "/home/site/wwwroot/MyFunction/__init__.py", line 8, in main
+    result = int('abc')  # Simulating a ValueError
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionInvoker`1.InvokeAsync(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Coerce[T](Task`1 src, String method, Func`2 getter)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Invoke(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Workers.Rpc.Streaming.StreamingInvoker`1.<InvokeAsync>d__5.MoveNext()
+2024-01-18T12:34:57.345 [Error] Executed 'MyFunction' (Failed, Id=abcdefgh-1234-5678-abcd-ijklmnopqrst, Duration=567.89ms)Internal Server Error
+2024-01-18T12:35:00.123 [Information] Executing 'AnotherFunction' (Reason='This function was triggered by a message in the queue.', Id=ijklmnop-5678-9012-qrst-abcdefgh1234, OperationId=ijklmnop-5678-9012-qrst-abcdefgh1234)
+2024-01-18T12:35:00.234 [Information] Reading configuration settings...
+2024-01-18T12:35:00.345 [Information] Processing the incoming message...
+2024-01-18T12:35:00.456 [Error] Oops! An error occurred during the execution of 'AnotherFunction'. Details below:
+2024-01-18T12:35:00.456 [Error] Executed 'AnotherFunction' (Failed, Id=ijklmnop-5678-9012-qrst-abcdefgh1234, Duration=567.89ms)Unhandled exception. System.Private.CoreLib: Exception while executing function: AnotherFunction. AnotherFunction: [Errno 2] No such file or directory: '/path/to/missing/file.txt'. System.Private.CoreLib: Exception while executing function: AnotherFunction ---> Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcException: Result: Failure
+Exception: FileNotFoundError: [Errno 2] No such file or directory: '/path/to/missing/file.txt'
+Stack:   File "/home/site/wwwroot/AnotherFunction/__init__.py", line 12, in main
+    with open('/path/to/missing/file.txt', 'r') as file:  # Simulating a FileNotFoundError
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionInvoker`1.InvokeAsync(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Coerce[T](Task`1 src, String method, Func`2 getter)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Invoke(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Workers.Rpc.Streaming.StreamingInvoker`1.<InvokeAsync>d__5.MoveNext()
+2024-01-18T12:35:00.567 [Error] Executed 'AnotherFunction' (Failed, Id=ijklmnop-5678-9012-qrst-abcdefgh1234, Duration=789.01ms)Internal Server Error
+2024-01-18T12:35:30.789 [Information] Executing 'IndexErrorFunction' (Reason='This function was triggered by an HTTP request.', Id=qrstuvwx-5678-9012-ijkl-abcd12345678, OperationId=qrstuvwx-5678-9012-ijkl-abcd12345678)
+2024-01-18T12:35:31.012 [Information] Parsing input data...
+2024-01-18T12:35:31.123 [Information] Extracting element at index 5...
+2024-01-18T12:35:31.234 [Error] Oops! An error occurred during the execution of 'IndexErrorFunction'. Details below:
+2024-01-18T12:35:31.234 [Error] Executed 'IndexErrorFunction' (Failed, Id=qrstuvwx-5678-9012-ijkl-abcd12345678, Duration=345.67ms)Unhandled exception. System.Private.CoreLib: Exception while executing function: IndexErrorFunction. IndexErrorFunction: list index out of range. System.Private.CoreLib: Exception while executing function: IndexErrorFunction ---> Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcException: Result: Failure
+Exception: IndexError: list index out of range
+Stack:   File "/home/site/wwwroot/IndexErrorFunction/__init__.py", line 10, in main
+    element = data[5]  # Simulating an IndexError
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionInvoker`1.InvokeAsync(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Coerce[T](Task`1 src, String method, Func`2 getter)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Invoke(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Workers.Rpc.Streaming.StreamingInvoker`1.<InvokeAsync>d__5.MoveNext()
+2024-01-18T12:35:31.345 [Error] Executed 'IndexErrorFunction' (Failed, Id=qrstuvwx-5678-9012-ijkl-abcd12345678, Duration=567.89ms)Internal Server Error
+2024-01-18T12:36:00.123 [Information] Executing 'KeyErrorFunction' (Reason='This function was triggered by a timer.', Id=mnopqrst-5678-9012-ijkl-efgh87654321, OperationId=mnopqrst-5678-9012-ijkl-efgh87654321)
+2024-01-18T12:36:00.234 [Information] Retrieving data from a dictionary...
+2024-01-18T12:36:00.345 [Error] Oops! An error occurred during the execution of 'KeyErrorFunction'. Details below:
+2024-01-18T12:36:00.345 [Error] Executed 'KeyErrorFunction' (Failed, Id=mnopqrst-5678-9012-ijkl-efgh87654321, Duration=345.67ms)Unhandled exception. System.Private.CoreLib: Exception while executing function: KeyErrorFunction. KeyErrorFunction: 'missing_key'. System.Private.CoreLib: Exception while executing function: KeyErrorFunction ---> Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcException: Result: Failure
+Exception: KeyError: 'missing_key'
+Stack:   File "/home/site/wwwroot/KeyErrorFunction/__init__.py", line 8, in main
+    value = data['missing_key']  # Simulating a KeyError
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionInvoker`1.InvokeAsync(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Coerce[T](Task`1 src, String method, Func`2 getter)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Invoke(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Workers.Rpc.Streaming.StreamingInvoker`1.<InvokeAsync>d__5.MoveNext()
+2024-01-18T12:36:00.456 [Error] Executed 'KeyErrorFunction' (Failed, Id=mnopqrst-5678-9012-ijkl-efgh87654321, Duration=567.89ms)Internal Server Error
+2024-01-18T12:36:30.123 [Information] Executing 'TypeErrorFunction' (Reason='This function was triggered by an event.', Id=uvwxyzab-5678-9012-ijkl-mnop98765432, OperationId=uvwxyzab-5678-9012-ijkl-mnop98765432)
+2024-01-18T12:36:30.234 [Information] Processing incoming data...
+2024-01-18T12:36:30.345 [Error] Oops! An error occurred during the execution of 'TypeErrorFunction'. Details below:
+2024-01-18T12:36:30.345 [Error] Executed 'TypeErrorFunction' (Failed, Id=uvwxyzab-5678-9012-ijkl-mnop98765432, Duration=345.67ms)Unhandled exception. System.Private.CoreLib: Exception while executing function: TypeErrorFunction. TypeErrorFunction: can't multiply sequence by non-int of type 'str'. System.Private.CoreLib: Exception while executing function: TypeErrorFunction ---> Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcException: Result: Failure
+Exception: TypeError: can't multiply sequence by non-int of type 'str'
+Stack:   File "/home/site/wwwroot/TypeErrorFunction/__init__.py", line 9, in main
+    result = data * 2  # Simulating a TypeError
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionInvoker`1.InvokeAsync(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Coerce[T](Task`1 src, String method, Func`2 getter)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Invoke(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Workers.Rpc.Streaming.StreamingInvoker`1.<InvokeAsync>d__5.MoveNext()
+2024-01-18T12:36:30.456 [Error] Executed 'TypeErrorFunction' (Failed, Id=uvwxyzab-5678-9012-ijkl-mnop98765432, Duration=567.89ms)Internal Server Error
+2024-01-18T12:37:30.123 [Information] Executing 'FileNotFoundErrorFunction' (Reason='This function was triggered by an Azure Storage event.', Id=qrstuvwx-5678-9012-ijkl-abcd98765432, OperationId=qrstuvwx-5678-9012-ijkl-abcd98765432)
+2024-01-18T12:37:30.234 [Information] Processing file event...
+2024-01-18T12:37:30.345 [Error] Oops! An error occurred during the execution of 'FileNotFoundErrorFunction'. Details below:
+2024-01-18T12:37:30.345 [Error] Executed 'FileNotFoundErrorFunction' (Failed, Id=qrstuvwx-5678-9012-ijkl-abcd98765432, Duration=345.67ms)Unhandled exception. System.Private.CoreLib: Exception while executing function: FileNotFoundErrorFunction. FileNotFoundErrorFunction: [Errno 2] No such file or directory: '/path/to/missing/file.txt'. System.Private.CoreLib: Exception while executing function: FileNotFoundErrorFunction ---> Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcException: Result: Failure
+Exception: FileNotFoundError: [Errno 2] No such file or directory: '/path/to/missing/file.txt'
+Stack:   File "/home/site/wwwroot/FileNotFoundErrorFunction/__init__.py", line 14, in main
+    with open('/path/to/missing/file.txt', 'r') as file:  # Simulating a FileNotFoundError
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionInvoker`1.InvokeAsync(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Coerce[T](Task`1 src, String method, Func`2 getter)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Invoke(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Workers.Rpc.Streaming.StreamingInvoker`1.<InvokeAsync>d__5.MoveNext()
+2024-01-18T12:37:30.456 [Error] Executed 'FileNotFoundErrorFunction' (Failed, Id=qrstuvwx-5678-9012-ijkl-abcd98765432, Duration=567.89ms)Internal Server Error
+2024-01-18T12:38:00.789 [Information] Executing 'CustomErrorFunction' (Reason='This function was triggered by a custom event.', Id=uvwxyzab-5678-9012-ijkl-mnop87654321, OperationId=uvwxyzab-5678-9012-ijkl-mnop87654321)
+2024-01-18T12:38:01.012 [Information] Processing custom event...
+2024-01-18T12:38:01.123 [Error] Oops! An error occurred during the execution of 'CustomErrorFunction'. Details below:
+2024-01-18T12:38:01.123 [Error] Executed 'CustomErrorFunction' (Failed, Id=uvwxyzab-5678-9012-ijkl-mnop87654321, Duration=345.67ms)Unhandled exception. System.Private.CoreLib: Exception while executing function: CustomErrorFunction. CustomErrorFunction: Something went wrong in the custom logic. System.Private.CoreLib: Exception while executing function: CustomErrorFunction ---> Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcException: Result: Failure
+Exception: CustomError: Something went wrong in the custom logic
+Stack:   File "/home/site/wwwroot/CustomErrorFunction/__init__.py", line 10, in main
+    raise CustomError("Something went wrong in the custom logic")  # Simulating a custom error
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionInvoker`1.InvokeAsync(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Coerce[T](Task`1 src, String method, Func`2 getter)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Invoke(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Workers.Rpc.Streaming.StreamingInvoker`1.<InvokeAsync>d__5.MoveNext()
+2024-01-18T12:38:01.234 [Error] Executed 'CustomErrorFunction' (Failed, Id=uvwxyzab-5678-9012-ijkl-mnop87654321, Duration=567.89ms)Internal Server Error
+2024-01-18T12:38:30.123 [Information] Executing 'UniqueValueErrorFunction' (Reason='This function was triggered by a unique event.', Id=ijklmnop-5678-9012-qrst-uvwx98765432, OperationId=ijklmnop-5678-9012-qrst-uvwx98765432)
+2024-01-18T12:38:30.234 [Information] Parsing input data...
+2024-01-18T12:38:30.345 [Information] Processing special characters...
+2024-01-18T12:38:30.456 [Error] Oops! An error occurred during the execution of 'UniqueValueErrorFunction'. Details below:
+2024-01-18T12:38:30.456 [Error] Executed 'UniqueValueErrorFunction' (Failed, Id=ijklmnop-5678-9012-qrst-uvwx98765432, Duration=345.67ms)Unhandled exception. System.Private.CoreLib: Exception while executing function: UniqueValueErrorFunction. UniqueValueErrorFunction: invalid literal for int() with base 10: '!@#$'. System.Private.CoreLib: Exception while executing function: UniqueValueErrorFunction ---> Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcException: Result: Failure
+Exception: ValueError: invalid literal for int() with base 10: '!@#$'
+Stack:   File "/home/site/wwwroot/UniqueValueErrorFunction/__init__.py", line 9, in main
+    result = int('!@#$')  # Simulating a ValueError with special characters
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionInvoker`1.InvokeAsync(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Coerce[T](Task`1 src, String method, Func`2 getter)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Invoke(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Workers.Rpc.Streaming.StreamingInvoker`1.<InvokeAsync>d__5.MoveNext()
+2024-01-18T12:38:30.567 [Error] Executed 'UniqueValueErrorFunction' (Failed, Id=ijklmnop-5678-9012-qrst-uvwx98765432, Duration=567.89ms)Internal Server Error
+2024-01-18T12:39:00.789 [Information] Executing 'AssertionErrorFunction' (Reason='This function was triggered by a scheduled timer.', Id=mnopqrst-5678-9012-uvwx-ijkl87654321, OperationId=mnopqrst-5678-9012-uvwx-ijkl87654321)
+2024-01-18T12:39:01.012 [Information] Checking for a specific condition...
+2024-01-18T12:39:01.123 [Error] Oops! An error occurred during the execution of 'AssertionErrorFunction'. Details below:
+2024-01-18T12:39:01.123 [Error] Executed 'AssertionErrorFunction' (Failed, Id=mnopqrst-5678-9012-uvwx-ijkl87654321, Duration=345.67ms)Unhandled exception. System.Private.CoreLib: Exception while executing function: AssertionErrorFunction. AssertionErrorFunction: Assertion failed: The condition was not met. System.Private.CoreLib: Exception while executing function: AssertionErrorFunction ---> Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcException: Result: Failure
+Exception: AssertionError: Assertion failed: The condition was not met
+Stack:   File "/home/site/wwwroot/AssertionErrorFunction/__init__.py", line 8, in main
+    assert False, "Assertion failed: The condition was not met"  # Simulating an AssertionError
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionInvoker`1.InvokeAsync(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Coerce[T](Task`1 src, String method, Func`2 getter)
+   at Microsoft.Azure.WebJobs.Script.Description.FunctionGenerator.Invoke(Object[] parameters)
+   at Microsoft.Azure.WebJobs.Script.Workers.Rpc.Streaming.StreamingInvoker`1.<InvokeAsync>d__5.MoveNext()
+2024-01-18T12:39:01.234 [Error] Executed 'AssertionErrorFunction' (Failed, Id=mnopqrst-5678-9012-uvwx-ijkl87654321, Duration=567.89ms)Internal Server Error
+
